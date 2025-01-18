@@ -1,0 +1,11 @@
+"use strict";
+let nvalor;
+let valor;
+valor = 10;
+nvalor = valor;
+console.log(nvalor);
+let nvalor2;
+let valor2;
+valor2 = "20";
+nvalor2 = Number.parseInt(valor2);
+console.log(nvalor2);
