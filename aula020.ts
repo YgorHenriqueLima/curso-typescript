@@ -1,19 +1,36 @@
 class Conta {
     protected numero:number;
     protected titular:string;
+    protected saldoconta:number;
 
     constructor(titular:string){
         this.numero = this.gerarNumeroConta();
         this.titular = titular;
+        this.saldoconta = 0
     }
 
     private gerarNumeroConta():number{
         return Math.floor(Math.random()*100000)+1;
     }
 
-    info():void{
+    protected info():void{
         console.log(`numero: ${this.numero}`);
         console.log(`titular: ${this.titular}`);
+    }
+    public saldo():number{
+        return this.saldoconta;
+    }
+    
+    public deposito(valor:number):void{
+        this.saldoconta+=valor;
+    }
+    
+    public saque(valor:number):void{
+        if(valor >= this.saldoconta){
+            this.saldoconta-=valor;
+        }else{
+            console.log("saldo insuficiente")
+        }
     }
 }
 
@@ -53,6 +70,7 @@ class ContaPJ extends Conta{
 conta1.info()*/
 const conta1 = new ContaPF(11122223392,"fabrício pereira");
 conta1.info()
+conta1.deposito(1000);
 
 const conta2 = new ContaPJ(11133344483,"empresa.dev");
 conta2.info()
